@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cifrado Afin App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+  <!-- CSS Generic Styles -->
+  <link rel="stylesheet" href="dependencies/css/generic-styles.css" />
+
+  <!-- CSS Bootstrap -->
+  <link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="dependencies/bootstrap/css/mdb.min.css" />
+
+  <!-- JS Bootstrap, JQuery, Popper -->
+  <script src="dependencies/bootstrap/js/jquery.js"></script>
+  <script src="dependencies/bootstrap/js/popper.js"></script>
+  <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+  <script src="dependencies/bootstrap/js/mdb.min.js"></script>
+
+  <!-- JS FontAwesome 5.5.0 -->
+  <script src="dependencies/bootstrap/fontawesome/js/all.js"></script>
+
+  <script src="dependencies/js/script.js"></script>
+
+  <!--JS SRC -->
+  <script src="src/js/models/alphabets.js"></script>
+  <script src="src/js/services/cypher.js"></script>
+  <script src="src/js/services/coprimos.js"></script>
+  <script src="src/js/services/frecuency.js"></script>
+  <script src="src/js/services/descypher.js"></script>
+  <script src="src/js/controller/main.js"></script>
+
+</head>
+
+<body>
+  <nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark sticky-top transparent-div">
+    <a class="navbar-brand" href="#">Cifrado Afín App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    </div>
+  </nav>
+
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  <div class="container" style="min-height: 500px;">
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="jumbotron text-center hoverable p-4">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Entradas</h4>
+              <hr />
+              <div class="row">
+                <div class="col">
+                  
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Const. Decimación (a)</span>
+                    </div>
+                    <input id="a" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                  </div>
+
+                </div>
+                <div class="col">
+
+                  <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">Const. Desplazamiento (b)</span>
+                    </div>
+                    <input id="b" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                  </div>
+
+                </div>
+              </div> 
+              <button type="button" class="btn btn-success btn-sm" onclick="validateAB()">
+                Validar coprimos
+              </button> 
+              <hr />            
+              <textarea class="form-control" id="inputTextArea" placeholder="Entrada a cifrar o descifrar">                
+              </textarea>
+            </div>
+            <div class="col-sm-6">
+              <h4>Resultado</h4>
+              <hr />
+              <textarea class="form-control" id="resultTextArea" placeholder="Resultado">                
+              </textarea>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-12">
+              <div style="display: flex; flex-direction: row; justify-content: center;">
+                <button type="button" class="btn btn-primary" onclick="cypher()">
+                  CIFRAR
+                </button>
+                <button type="button" class="btn btn-warning">
+                  DESCIFRAR
+                </button>
+              </div>
+              <div style="display: flex; flex-direction: row; justify-content: center;">
+                <button type="button" class="btn btn-primary" onclick="clean()">
+                  LIMPIAR DATOS
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="jumbotron text-center hoverable p-4">
+
+          <h4>Estadísticas</h4>
+          <hr />
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer id="footer" class="page-footer unique-color-dark mt-4" style="padding-left: 0px;">
+    <!-- Copyright-->
+    <div class="footer-copyright py-3 text-center">
+      © 2021 Copyright:
+      <a href="http://vapedraza.com">
+        <strong> Víctor Andrés Pedraza León</strong>
+      </a>
+    </div>
+    <!--/.Copyright -->
+  </footer>
+
+</html>
