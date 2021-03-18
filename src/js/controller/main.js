@@ -40,6 +40,27 @@ function cypher(){
 /**
  * Descypher Event
  */
+function descypher(){
+    let inputText = document.getElementById("inputTextArea").value;
+    inputText = trimfield(inputText);
+    try{
+        validateInputText(inputText);
+        
+        inputText = inputText.toUpperCase();
+
+        let frecuencies = buildWordFrecuencies(inputText);
+        console.log("--------Frecuencias");
+        console.log(frecuencies);
+        let sortedFrecuencies = sortFrecuencies(frecuencies);
+        console.log("--------Frecuencias ordenadas de mayor a menor");
+        console.log(sortedFrecuencies);
+
+        
+
+    } catch(err){
+        alert(err.message);
+    }
+}
 
 /**
  * Coprimos Event
