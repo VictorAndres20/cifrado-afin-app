@@ -1,5 +1,6 @@
 function buildWordFrecuencies(text){
     let arr = [];
+    let total = 0;
 
     for(let i=0;i<text.length;i++){
         let word = text[i];
@@ -10,10 +11,36 @@ function buildWordFrecuencies(text){
             } else {
                 arr = addFecuency(index, arr);
             }
+            total++;
         }
     }
 
-    return arr;
+    return {arr, total};
+}
+
+function buildTableFrecuenciesHTML(arr, total){
+    let html = '<table class="table">';
+    html += '<thead class="thead-dark">';
+    html += '<tr><th scope="col">Letra</th><th scope="col">Cantidad</th><th scope="col">Procentaje</th></tr>';
+    html += '<thead class="thead-dark">';
+    html += '</thead>';
+    html += '<tbody>';
+    
+    for(let i=0;i<arr.length;i++){
+        let frec = arr[i];
+        let {word, f} = frec;
+        html += '<tr>';
+        html += `<td>${word}</td>`;
+        html += `<td>${f}</td>`;
+        html += `<td>${f/total * 100} %</td>`;
+        html += '</tr>';
+        
+    }
+
+    html += '</tbody>';
+    html += '</table>';
+
+    return html;
 }
 
 function sortFrecuencies(arr){

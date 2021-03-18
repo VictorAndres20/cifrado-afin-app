@@ -19,11 +19,7 @@ function cypher(){
             let word = inputText[i];
             if(word != " "){
                 let m = alphabet.findIndex(w => w == word);
-                console.log(word);
-                console.log(m);
-                let cpos = cypherWordPositionEcuation(m ,a, b, n);
-                console.log(cpos);
-                console.log(alphabet[cpos]);
+                let cpos = cypherWordPositionEcuation(m ,a, b, alphabet.length);
                 cypherText = cypherText + alphabet[cpos];
             } else {
                 cypherText = cypherText + word;
@@ -48,14 +44,56 @@ function descypher(){
         
         inputText = inputText.toUpperCase();
 
-        let frecuencies = buildWordFrecuencies(inputText);
-        console.log("--------Frecuencias");
-        console.log(frecuencies);
+        let {arr, total} = buildWordFrecuencies(inputText);
+        let totalWords = total;
+        let frecuencies = arr;
         let sortedFrecuencies = sortFrecuencies(frecuencies);
-        console.log("--------Frecuencias ordenadas de mayor a menor");
-        console.log(sortedFrecuencies);
 
-        
+        let tableHTML = buildTableFrecuenciesHTML(frecuencies, totalWords);
+        document.getElementById("stats").innerHTML = tableHTML;
+
+        let W = alphabet.findIndex(w => w == sortedFrecuencies[0].word);
+        let K = alphabet.findIndex(w => w == sortedFrecuencies[1].word);
+        let E = alphabet.findIndex(w => w == ES_LAN_CONST[1]);
+
+        console.log(W);
+        console.log(K);
+        console.log(K);
+
+        let posWordCypher2 = 0;
+        let posWordCypher1 = 0;
+        if(W > K){
+            posWordCypher2 = W;
+            posWordCypher1 = K;
+        } else {
+            posWordCypher2 = K;
+            posWordCypher1 = W;
+        }
+
+        let n = alphabet.length;
+        console.log(n);
+
+        let b = E;
+
+        let a = findA(posWordCypher2, posWordCypher1, b, n)
+
+        console.log(a);
+
+        let descypherText = "";
+        for(let i = 0; i < inputText.length; i++){
+            let word = inputText[i];
+            if(word != " "){
+                let c = alphabet.findIndex(w => w == word);
+                let cpos = descypherWordPositionEcuation(c, a, b, n);
+                console.log("FOR");
+                console.log(cpos);
+                descypherText = descypherText + alphabet[cpos];
+            } else {
+                descypherText = descypherText + word;
+            }            
+        }
+
+        document.getElementById("resultTextArea").value=descypherText;
 
     } catch(err){
         alert(err.message);
@@ -93,6 +131,7 @@ function clean(){
     document.getElementById("b").value = "";
     document.getElementById("inputTextArea").value = "";
     document.getElementById("resultTextArea").value = "";
+    document.getElementById("stats").innerHTML = "";
 }
 
 /**

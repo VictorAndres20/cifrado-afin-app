@@ -1,5 +1,5 @@
-function descypherWordPositionEcuation(m ,a, b, n){
-    return m = ((c - b) * (modinv(a,n))) % n;
+function descypherWordPositionEcuation(c, a, b, n){
+    return ((c - b) * (modinv(a,n))) % n;
 }
 
 function findA(posWordCypher2, posWordCypher1, posConstPlain, n){
